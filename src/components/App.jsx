@@ -11,9 +11,9 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: '',
     name: '',
     number: '',
+    filter: '',
   };
 
   handleDeleteContacts = id => {
@@ -28,21 +28,15 @@ export class App extends Component {
       : this.setState({ number: event.target.value });
   };
 
-  handleAddContact = event => {
-    event.preventDefault();
-
-    if (this.state.name !== '' && this.state.number !== '') {
-      const newObject = {
-        name: this.state.name,
-        id: nanoid(),
-        number: this.state.number,
-      };
-      this.setState(prevState => ({
-        contacts: [...prevState.contacts, newObject],
-      }));
-      this.setState({ name: '' });
-      this.setState({ number: '' });
-    }
+  handleAddContact = ({ name, number }) => {
+    const newObject = {
+      name,
+      id: nanoid(),
+      number,
+    };
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newObject],
+    }));
   };
 
   render() {
@@ -50,10 +44,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm
-          handleChangeInput={this.handleChangeInput}
-          handleAddContact={this.handleAddContact}
-        />
+        <ContactForm handleAddContact={this.handleAddContact} />
         <h2>Contacts</h2>
         <Filter></Filter>
         <ContactList
