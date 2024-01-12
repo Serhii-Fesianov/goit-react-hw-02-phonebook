@@ -4,6 +4,7 @@ export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
+    filter: '',
   };
 
   handleChange = event => {
@@ -15,6 +16,7 @@ export class ContactForm extends Component {
     this.props.handleAddContact(this.state);
     this.setState({ name: '', number: '' });
   };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -39,5 +41,3 @@ export class ContactForm extends Component {
     );
   }
 }
-
-export default ContactForm;
