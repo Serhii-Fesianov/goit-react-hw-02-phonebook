@@ -1,8 +1,8 @@
 import { ElementList } from 'components/ElementList/ElementList';
-
+import s from './ContactList.module.css';
 export const ContactList = ({ contacts, handleDeleteContacts }) => {
   return (
-    <ul>
+    <ul className={s.styleContactList}>
       {contacts.map(contact => {
         return (
           <ElementList
