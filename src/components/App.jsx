@@ -23,12 +23,6 @@ export class App extends Component {
     });
   };
 
-  handleChangeInput = (event, isName) => {
-    isName
-      ? this.setState({ name: event.target.value })
-      : this.setState({ number: event.target.value });
-  };
-
   handleAddContact = ({ name, number }) => {
     const isExist = this.state.contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
